@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <title>ChatSphere — Chat by username</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <section id="loginScreen" class="login-screen">
+      <div class="login-card">
+        <div class="brand-mark">✦</div>
+        <p class="eyebrow">YOUR WORLD, ONE CHAT AWAY</p>
+        <h1>Meet people.<br><span>Message freely.</span></h1>
+        <p class="muted intro">Find anyone on ChatSphere by their unique username. No phone number needed.</p>
+        <button id="googleLogin" class="google-btn"><span class="google-g">G</span> Continue with Google</button>
+        <p class="tiny muted">By continuing, you agree to use ChatSphere respectfully.</p>
+        <div id="loginError" class="error"></div>
+      </div>
+      <div class="login-orb orb-one"></div><div class="login-orb orb-two"></div>
+    </section>
+
+    <section id="usernameScreen" class="username-screen hidden">
+      <div class="login-card username-card">
+        <div class="brand-mark">✦</div>
+        <p class="eyebrow">ONE LAST THING</p>
+        <h1>Choose your<br><span>username.</span></h1>
+        <p class="muted intro">People can find you with this username. Choose something unique.</p>
+        <label for="usernameInput">Username</label>
+        <div class="username-field"><span>@</span><input id="usernameInput" maxlength="20" autocomplete="off" placeholder="yourname123" /></div>
+        <p class="tiny muted">3–20 characters: lowercase letters, numbers and underscores.</p>
+        <button id="saveUsername" class="primary-btn">Create my account <span>→</span></button>
+        <div id="usernameError" class="error"></div>
+      </div>
+    </section>
+
+    <section id="chatApp" class="chat-app hidden">
+      <aside class="sidebar">
+        <div class="side-header">
+          <div class="brand-lockup"><div class="brand-mark small">✦</div><span>ChatSphere</span></div>
+          <button id="logoutBtn" class="icon-btn" title="Sign out" aria-label="Sign out">↗</button>
+        </div>
+        <div class="me-card">
+          <img id="myPhoto" class="avatar me-avatar" alt="" />
+          <div class="me-info"><strong id="myName">Your name</strong><span id="myHandle">@username</span></div>
+          <span class="online-dot"></span>
+        </div>
+        <div class="side-tabs"><button class="tab active" id="chatsTab">Messages</button><button class="tab" id="discoverTab">Discover</button></div>
+        <div class="search-wrap"><span>⌕</span><input id="searchInput" placeholder="Search by username..." autocomplete="off" /></div>
+        <div class="list-caption" id="listCaption">YOUR CONVERSATIONS</div>
+        <div id="peopleList" class="people-list"></div>
+        <div class="sidebar-footer"><span class="status-pulse"></span> Secure sign-in with Google</div>
+      </aside>
+      <section class="conversation">
+        <div id="emptyState" class="empty-state">
+          <div class="empty-illustration"><div class="bubble bubble-a">Hey! 👋</div><div class="bubble bubble-b">Hello there</div><div class="spark">✦</div></div>
+          <h2>Your next conversation<br>starts here.</h2>
+          <p>Search a username in Discover to start chatting.</p>
+          <button id="discoverCta" class="primary-btn compact">Find people <span>→</span></button>
+        </div>
+        <div id="activeChat" class="active-chat hidden">
+          <header class="chat-header">
+            <img id="peerPhoto" class="avatar" alt="" />
+            <div class="peer-details"><strong id="peerName">Person</strong><span id="peerHandle">@person</span></div>
+            <div class="chat-header-right"><span class="encrypted-dot"></span><span>Private conversation</span></div>
+          </header>
+          <div id="messages" class="messages"></div>
+          <div class="composer-area">
+            <div class="composer"><textarea id="messageInput" rows="1" maxlength="4000" placeholder="Write a message..."></textarea><button id="sendBtn" class="send-btn" title="Send message" aria-label="Send message">↑</button></div>
+            <div class="composer-hint">Enter to send · Shift + Enter for a new line</div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
